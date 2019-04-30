@@ -14,7 +14,7 @@ after_success:
   - docker build -t solareenlo/multi-server ./server
   - docker build -t solareenlo/multi-worker ./worker
   # Docker CLIにログインする
-  - docker -u "$DOCKER_ID" -p "$DOCKER_PASSWORD"
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # 作ったイメージをDocker Hubにpushする
   - docker push solareenlo/multi-client
   - docker push solareenlo/multi-nginx
