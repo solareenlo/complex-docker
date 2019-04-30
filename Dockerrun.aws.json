@@ -1,0 +1,36 @@
+{
+  "AWSEBCockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "client",
+      "image": "solareenlo/multi-client",
+      "hostname": "client",
+      "essential": false
+    },
+    {
+      "name": "server",
+      "image": "solareenlo/multi-server",
+      "hostname": "api",
+      "essential": false
+    },
+    {
+      "name": "worker",
+      "image": "solareenlo/multi-worker",
+      "hostname": "worker",
+      "essenstial": false
+    },
+    {
+      "name": "nginx",
+      "image": "solareenlo/multi-nginx",
+      "hostname": "nginx",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["client", "server"]
+    }
+  ]
+}
