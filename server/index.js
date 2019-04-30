@@ -1,6 +1,6 @@
 const keys = require('./keys');
 
-// Express Appの設定
+// Express App Setup
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -9,11 +9,11 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// Postgres Clientの設定
+// Postgres Client Setup
 const { Pool } = require('pg');
 const pgClient = new Pool({
   user: keys.pgUser,
-  host: keys.gpHost,
+  host: keys.pgHost,
   database: keys.pgDatabase,
   password: keys.pgPassword,
   port: keys.pgPort
@@ -24,7 +24,7 @@ pgClient
   .query('CREATE TABLE IF NOT EXISTS values (number INT)')
   .catch(err => console.log(err));
 
-// Redis Clientの設定
+// Redis Client Setup
 const redis = require('redis');
 const redisClient = redis.createClient({
   host: keys.redisHost,
@@ -33,13 +33,15 @@ const redisClient = redis.createClient({
 });
 const redisPublisher = redisClient.duplicate();
 
-// Expressのルートハンドラー
+// Express route handlers
+
 app.get('/', (req, res) => {
   res.send('Hi');
 });
 
 app.get('/values/all', async (req, res) => {
   const values = await pgClient.query('SELECT * from values');
+
   res.send(values.rows);
 });
 

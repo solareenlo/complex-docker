@@ -27,10 +27,11 @@ class Fib extends Component {
 
   handleSubmit = async event => {
     event.preventDefault();
+
     await axios.post('/api/values', {
       index: this.state.index
     });
-    this.state.index({ index: '' });
+    this.setState({ index: '' });
   };
 
   renderSeenIndexes() {
@@ -39,13 +40,16 @@ class Fib extends Component {
 
   renderValues() {
     const entries = [];
+
     for (let key in this.state.values) {
       entries.push(
         <div key={key}>
-          インデックス{key}のフィボナッチ数は{this.state.values[key]}
+          インデックス{key}のフィボナッチ数: {this.state.values[key]}
         </div>
       );
     }
+
+    return entries;
   }
 
   render() {
@@ -60,7 +64,7 @@ class Fib extends Component {
           <button>Submit</button>
         </form>
 
-        <h3>入力済みインデックス:</h3>
+        <h3>入力したインデックス:</h3>
         {this.renderSeenIndexes()}
 
         <h3>フィボナッチ数:</h3>
