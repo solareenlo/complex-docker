@@ -1,8 +1,11 @@
 # complex-docker
-## フローチャート
-![フローチャート](https://github.com/solareenlo/complex-docker/blob/master/images/flowchart.png)
+## 本番環境でのフローチャート
+![本番フローチャート](https://github.com/solareenlo/complex-docker/blob/master/images/flowchart_production.png)
 
-## ローカルで動かしたときのスクショ
+## 開発環境でのフローチャート
+![開発フローチャート](https://github.com/solareenlo/complex-docker/blob/master/images/flowchart.png)
+
+## ローカルで開発バージョンを動かしたときのスクショ
 ![スクショ](https://github.com/solareenlo/complex-docker/blob/master/images/Screenshot.png)
 
 ## Usage
