@@ -1,0 +1,22 @@
+sudo: required
+services:
+  - docker
+
+bebore_install:
+  - docker build -t solareenlo/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run solareenlo/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t solareenlo/multi-client ./client
+  - docker build -t solareenlo/multi-nginx ./nginx
+  - docker build -t solareenlo/multi-server ./server
+  - docker build -t solareenlo/multi-worker ./worker
+  # Docker CLIにログインする
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # 作ったイメージをDocker Hubにpushする
+  - docker push solareenlo/multi-client
+  - docker push solareenlo/multi-nginx
+  - docker push solareenlo/multi-server
+  - docker push solareenlo/multi-worker
