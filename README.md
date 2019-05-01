@@ -1,6 +1,15 @@
-# complex-docker
+# complex-docker [![Build Status](https://travis-ci.org/solareenlo/complex-docker.svg?branch=master)](https://travis-ci.org/solareenlo/complex-docker)
 ## 本番環境でのフローチャート
 ![本番フローチャート](https://github.com/solareenlo/complex-docker/blob/master/images/flowchart_production.png)
+
+## 対応付け
+|Docker|->|AWS|
+|---|---|---|
+|Dockerコンテナ(Nginx, Express, React)|->|AWS VPC|
+|Redis|->|AWS Memcached|
+|Postgres|->|AWS RDB|
+|Docker-compose|->|VPCセキュリティグループ|
+
 
 ## 開発環境でのフローチャート
 ![開発フローチャート](https://github.com/solareenlo/complex-docker/blob/master/images/flowchart.png)
