@@ -1,6 +1,9 @@
 # complex-docker [![Build Status](https://travis-ci.org/solareenlo/complex-docker.svg?branch=master)](https://travis-ci.org/solareenlo/complex-docker)
 **Live Demo**: http://multidocker-env.25ccpzrsad.us-east-1.elasticbeanstalk.com
 
+## 全体的なフロー図
+![フロー](https://github.com/solareenlo/complex-docker/blob/master/images/flow.png)
+
 ## 本番環境でのフローチャート
 ![本番フローチャート](https://github.com/solareenlo/complex-docker/blob/master/images/flowchart_production.png)
 
